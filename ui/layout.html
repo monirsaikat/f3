@@ -31,6 +31,35 @@
                         <a class="nav-link" href="{{ @BASE }}/api/users">{{ @nav.api }}</a>
                     </li>
 
+                    <check if="{{ @current_user }}">
+                        <true>
+                            <li class="nav-item dropdown ms-lg-2">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    👤 {{ @current_user.name }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="{{ @BASE }}/dashboard">{{ @nav.dashboard }}</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form method="post" action="{{ @BASE }}/logout" class="px-3 py-1">
+                                            <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger w-100">{{ @nav.logout }}</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </true>
+                        <false>
+                            <li class="nav-item">
+                                <a class="nav-link {{ @active=='login'?'active':'' }}" href="{{ @BASE }}/login">{{ @nav.login }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-sm btn-primary ms-lg-2" href="{{ @BASE }}/register">{{ @nav.register }}</a>
+                            </li>
+                        </false>
+                    </check>
+
                     <li class="nav-item dropdown ms-lg-2">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,6 +80,14 @@
     </nav>
 
     <main class="flex-grow-1">
+        <check if="{{ @flash }}">
+            <div class="container mt-3">
+                <div class="alert alert-{{ @flash.type }} alert-dismissible fade show" role="alert">
+                    {{ @flash.message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </check>
         <include href="{{ @content }}" />
     </main>
 

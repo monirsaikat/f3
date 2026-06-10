@@ -2,14 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Api\GuardedController;
 use App\Models\User;
 use Base;
 
 /**
  * REST resource for /api/users — demonstrates every HTTP verb,
  * route params (@id) and query params (?page, ?limit, ?search).
+ * Requires a valid Bearer token (see GuardedController).
  */
-class UserController extends Controller
+class UserController extends GuardedController
 {
     private const MAX_LIMIT = 50;
 

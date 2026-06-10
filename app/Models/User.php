@@ -16,6 +16,29 @@ class User extends Mapper
         parent::__construct(Base::instance()->get('DB'), 'users');
     }
 
+    /** Load a single user by email, or null if none. */
+    public static function findByEmail(string $email): ?self
+    {
+        $user = new self();
+        $user->load(['email = ?', $email]);
+
+        return $user->dry() ? null : $user;
+    }
+
+    /** Hash and store a plaintext password (never stored in clear). */
+    public function setPassword(string $plain): void
+    {
+        $this->set('password', password_hash($plain, PASSWORD_BCRYPT));
+    }
+
+    /** Verify a plaintext password against the stored hash. */
+    public function verifyPassword(string $plain): bool
+    {
+        $hash = $this->get('password');
+
+        return is_string($hash) && $hash !== '' && password_verify($plain, $hash);
+    }
+
     /** Filter for a case-insensitive name/email search, or null for "all". */
     public static function searchFilter(string $term): ?array
     {

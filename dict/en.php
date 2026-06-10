@@ -7,9 +7,35 @@ return [
     'lang_name' => 'English',
 
     'nav' => [
-        'home'  => 'Home',
-        'about' => 'About',
-        'api'   => 'API',
+        'home'      => 'Home',
+        'about'     => 'About',
+        'api'       => 'API',
+        'login'     => 'Login',
+        'register'  => 'Register',
+        'dashboard' => 'Dashboard',
+        'logout'    => 'Logout',
+    ],
+
+    'auth' => [
+        'login_title'     => 'Sign in',
+        'register_title'  => 'Create account',
+        'dashboard_title' => 'Dashboard',
+        'name'            => 'Name',
+        'email'           => 'Email',
+        'gender'          => 'Gender',
+        'gender_male'     => 'Male',
+        'gender_female'   => 'Female',
+        'gender_other'    => 'Other',
+        'password'        => 'Password',
+        'confirm'         => 'Confirm password',
+        'submit_login'    => 'Sign in',
+        'submit_register' => 'Create account',
+        'have_account'    => 'Already have an account?',
+        'no_account'      => "Don't have an account?",
+        'welcome'         => 'Welcome',
+        'profile'         => 'Your profile',
+        'member_since'    => 'Member since',
+        'api_hint'        => 'Use the token endpoints to access the API programmatically.',
     ],
 
     'home' => [

@@ -58,11 +58,46 @@ final class Database
                 name       VARCHAR(190) NOT NULL,
                 gender     VARCHAR(10) NULL,
                 email      VARCHAR(190) NOT NULL,
+                password   VARCHAR(255) NULL,
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 PRIMARY KEY (id),
                 UNIQUE KEY uniq_users_email (email)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
         );
+
+        // Self-migrate: add the password column to pre-existing installs.
+        self::ensureColumn($db, 'users', 'password', 'VARCHAR(255) NULL AFTER email');
+
+        $db->exec(
+            'CREATE TABLE IF NOT EXISTS api_tokens (
+                id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                user_id      INT UNSIGNED NOT NULL,
+                token_hash   CHAR(64) NOT NULL,
+                name         VARCHAR(100) NULL,
+                last_used_at TIMESTAMP NULL,
+                expires_at   TIMESTAMP NULL,
+                created_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (id),
+                UNIQUE KEY uniq_token_hash (token_hash),
+                KEY idx_tokens_user (user_id),
+                CONSTRAINT fk_tokens_user FOREIGN KEY (user_id)
+                    REFERENCES users (id) ON DELETE CASCADE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
+        );
+    }
+
+    /** Add a column only if it does not already exist (DB-agnostic migration). */
+    private static function ensureColumn(SQL $db, string $table, string $column, string $definition): void
+    {
+        $rows = $db->exec(
+            'SELECT COUNT(*) AS c FROM information_schema.COLUMNS
+             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = :t AND COLUMN_NAME = :c',
+            [':t' => $table, ':c' => $column]
+        );
+
+        if ((int) ($rows[0]['c'] ?? 0) === 0) {
+            $db->exec("ALTER TABLE `$table` ADD COLUMN `$column` $definition");
+        }
     }
 }

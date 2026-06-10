@@ -6,9 +6,35 @@ return [
     'lang_name' => 'বাংলা',
 
     'nav' => [
-        'home'  => 'হোম',
-        'about' => 'সম্পর্কে',
-        'api'   => 'এপিআই',
+        'home'      => 'হোম',
+        'about'     => 'সম্পর্কে',
+        'api'       => 'এপিআই',
+        'login'     => 'লগইন',
+        'register'  => 'নিবন্ধন',
+        'dashboard' => 'ড্যাশবোর্ড',
+        'logout'    => 'লগআউট',
+    ],
+
+    'auth' => [
+        'login_title'     => 'সাইন ইন',
+        'register_title'  => 'অ্যাকাউন্ট তৈরি করুন',
+        'dashboard_title' => 'ড্যাশবোর্ড',
+        'name'            => 'নাম',
+        'email'           => 'ইমেইল',
+        'gender'          => 'লিঙ্গ',
+        'gender_male'     => 'পুরুষ',
+        'gender_female'   => 'নারী',
+        'gender_other'    => 'অন্যান্য',
+        'password'        => 'পাসওয়ার্ড',
+        'confirm'         => 'পাসওয়ার্ড নিশ্চিত করুন',
+        'submit_login'    => 'সাইন ইন',
+        'submit_register' => 'অ্যাকাউন্ট তৈরি করুন',
+        'have_account'    => 'ইতিমধ্যে অ্যাকাউন্ট আছে?',
+        'no_account'      => 'অ্যাকাউন্ট নেই?',
+        'welcome'         => 'স্বাগতম',
+        'profile'         => 'আপনার প্রোফাইল',
+        'member_since'    => 'সদস্য হয়েছেন',
+        'api_hint'        => 'API ব্যবহার করতে টোকেন এন্ডপয়েন্ট ব্যবহার করুন।',
     ],
 
     'home' => [

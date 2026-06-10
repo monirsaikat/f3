@@ -1,0 +1,43 @@
+<section class="bg-white border-bottom py-5">
+    <div class="container">
+        <h1 class="fw-bold mb-1">{{ @auth.dashboard_title }}</h1>
+        <p class="text-muted mb-0">{{ @auth.welcome }}, {{ @user.name }}.</p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-dark text-white fw-semibold">{{ @auth.profile }}</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="text-muted">ID</span><span>{{ @user.id }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="text-muted">{{ @auth.name }}</span><span>{{ @user.name }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="text-muted">{{ @auth.email }}</span><span>{{ @user.email }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="text-muted">{{ @auth.gender }}</span><span>{{ @user.gender ?: '—' }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span class="text-muted">{{ @auth.member_since }}</span><span>{{ @user.created_at }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ @nav.api }}</h5>
+                    <p class="card-text text-muted">{{ @auth.api_hint }}</p>
+                    <a href="{{ @BASE }}/api/users" class="btn btn-outline-primary btn-sm">/api/users</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

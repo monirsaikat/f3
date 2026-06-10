@@ -6,9 +6,35 @@ return [
     'lang_name' => 'Español',
 
     'nav' => [
-        'home'  => 'Inicio',
-        'about' => 'Acerca de',
-        'api'   => 'API',
+        'home'      => 'Inicio',
+        'about'     => 'Acerca de',
+        'api'       => 'API',
+        'login'     => 'Entrar',
+        'register'  => 'Registrarse',
+        'dashboard' => 'Panel',
+        'logout'    => 'Salir',
+    ],
+
+    'auth' => [
+        'login_title'     => 'Iniciar sesión',
+        'register_title'  => 'Crear cuenta',
+        'dashboard_title' => 'Panel',
+        'name'            => 'Nombre',
+        'email'           => 'Correo',
+        'gender'          => 'Género',
+        'gender_male'     => 'Masculino',
+        'gender_female'   => 'Femenino',
+        'gender_other'    => 'Otro',
+        'password'        => 'Contraseña',
+        'confirm'         => 'Confirmar contraseña',
+        'submit_login'    => 'Iniciar sesión',
+        'submit_register' => 'Crear cuenta',
+        'have_account'    => '¿Ya tienes una cuenta?',
+        'no_account'      => '¿No tienes una cuenta?',
+        'welcome'         => 'Bienvenido',
+        'profile'         => 'Tu perfil',
+        'member_since'    => 'Miembro desde',
+        'api_hint'        => 'Usa los endpoints de token para acceder a la API mediante programación.',
     ],
 
     'home' => [

@@ -1,5 +1,10 @@
 RewriteEngine On
-RewriteBase /my-f3-app/
+RewriteBase /
+
+# Pass the Authorization header through to PHP (needed for API Bearer tokens)
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* index.php [L,QSA]

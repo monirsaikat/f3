@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Base;
 
-class HomeController extends Controller
+class HomeController extends WebController
 {
     /** GET / */
     public function index(Base $f3): void
