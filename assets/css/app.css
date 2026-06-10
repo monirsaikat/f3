@@ -1,0 +1,35 @@
+/* Project styles — loaded after bootstrap.min.css */
+
+.hero {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+    color: #fff;
+}
+
+.feature-icon {
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .75rem;
+    font-size: 1.5rem;
+}
+
+/* Gallery thumbnails */
+.gallery-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+.brand-logo {
+    height: 28px;
+    width: auto;
+    vertical-align: text-bottom;
+}
+
+/* Right-to-left support, toggled via <html dir="rtl"> for RTL languages */
+[dir="rtl"] .navbar-nav {
+    padding-right: 0;
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250" role="img" aria-label="Internationalization illustration">
+    <rect width="400" height="250" fill="#fdf2f8"/>
+    <circle cx="200" cy="115" r="70" fill="none" stroke="#db2777" stroke-width="3"/>
+    <ellipse cx="200" cy="115" rx="28" ry="70" fill="none" stroke="#db2777" stroke-width="2"/>
+    <line x1="130" y1="115" x2="270" y2="115" stroke="#db2777" stroke-width="2"/>
+    <line x1="138" y1="85" x2="262" y2="85" stroke="#f9a8d4" stroke-width="2"/>
+    <line x1="138" y1="145" x2="262" y2="145" stroke="#f9a8d4" stroke-width="2"/>
+    <text x="60" y="50" font-family="Arial" font-size="20" fill="#be185d">A</text>
+    <text x="320" y="60" font-family="Arial" font-size="20" fill="#be185d">あ</text>
+    <text x="330" y="190" font-family="Arial" font-size="20" fill="#be185d">অ</text>
+    <text x="55" y="195" font-family="Arial" font-size="20" fill="#be185d">Ñ</text>
+    <text x="200" y="225" font-family="Arial" font-size="15" font-weight="700" fill="#9d174d" text-anchor="middle">Multi-language UI</text>
+</svg>

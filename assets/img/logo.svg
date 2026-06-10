@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" width="120" height="32" role="img" aria-label="my-f3-app logo">
+    <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#4f46e5"/>
+            <stop offset="1" stop-color="#db2777"/>
+        </linearGradient>
+    </defs>
+    <rect x="0" y="2" width="28" height="28" rx="7" fill="url(#g)"/>
+    <text x="14" y="22" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700"
+          fill="#fff" text-anchor="middle">F3</text>
+    <text x="36" y="22" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700"
+          fill="#f8f9fa">my-app</text>
+</svg>

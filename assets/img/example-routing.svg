@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250" role="img" aria-label="Routing illustration">
+    <rect width="400" height="250" fill="#eef2ff"/>
+    <circle cx="60" cy="125" r="26" fill="#4f46e5"/>
+    <text x="60" y="131" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle">GET</text>
+    <line x1="90" y1="125" x2="160" y2="125" stroke="#6366f1" stroke-width="3"/>
+    <polygon points="160,118 175,125 160,132" fill="#6366f1"/>
+    <rect x="178" y="100" width="160" height="50" rx="8" fill="#fff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="258" y="130" font-family="monospace" font-size="13" fill="#3730a3" text-anchor="middle">/api/users/@id</text>
+    <text x="200" y="210" font-family="Arial" font-size="15" font-weight="700" fill="#3730a3" text-anchor="middle">RESTful Routing</text>
+</svg>
