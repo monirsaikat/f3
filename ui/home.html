@@ -1,0 +1,54 @@
+<section class="hero py-5">
+    <div class="container py-5 text-center">
+        <h1 class="display-4 fw-bold mb-3">Welcome to my-f3-app</h1>
+        <p class="lead mb-4 mx-auto" style="max-width: 40rem;">
+            A lightweight PHP application built on the Fat-Free Framework — clean MVC structure,
+            a full REST API, and a MySQL backend that provisions its own schema.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{{ @BASE }}/about" class="btn btn-light btn-lg px-4">Learn more</a>
+            <a href="{{ @BASE }}/api/users" class="btn btn-outline-light btn-lg px-4">Explore the API</a>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="feature-icon bg-primary-subtle text-primary mb-3">⚡</div>
+                    <h5 class="card-title">Fast &amp; tiny</h5>
+                    <p class="card-text text-muted">
+                        The whole framework is a ~90&nbsp;KB core with no heavy dependencies,
+                        so requests stay snappy.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="feature-icon bg-success-subtle text-success mb-3">🔌</div>
+                    <h5 class="card-title">RESTful API</h5>
+                    <p class="card-text text-muted">
+                        A complete <code>/api/users</code> resource covering every HTTP verb,
+                        route params, pagination and search.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="feature-icon bg-danger-subtle text-danger mb-3">🗄️</div>
+                    <h5 class="card-title">Self-provisioning DB</h5>
+                    <p class="card-text text-muted">
+                        MySQL tables are created with <code>IF NOT EXISTS</code> at boot —
+                        no migration files to run or drop.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -10,6 +10,9 @@ $f3->config(__DIR__ . '/config/config.ini');
 $f3->config(__DIR__ . '/config/db.ini');
 $f3->config(__DIR__ . '/config/routes.ini');
 
+// Where the Bootstrap templates live
+$f3->set('UI', __DIR__ . '/ui/');
+
 // Connect to MySQL and self-provision the schema (no migrations to run).
 Database::boot($f3);
 

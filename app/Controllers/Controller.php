@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Base;
+use Template;
 
 /**
  * Base controller: shared request/response helpers for every controller.
@@ -30,6 +31,19 @@ abstract class Controller
             header('Content-Type: application/json; charset=utf-8');
         }
         echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
+     * Render a page template inside the shared Bootstrap layout.
+     *
+     * @param string $template page body template under ui/ (e.g. 'home.html')
+     * @param array  $data     variables exposed to the template
+     */
+    protected function view(string $template, array $data = []): void
+    {
+        $this->f3->mset($data);
+        $this->f3->set('content', $template);
+        echo Template::instance()->render('layout.html');
     }
 
     /** Decoded JSON request body (PUT/PATCH/POST), [] when absent or invalid. */

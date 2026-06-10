@@ -1,0 +1,61 @@
+<section class="bg-white border-bottom py-5">
+    <div class="container">
+        <h1 class="fw-bold mb-2">About this project</h1>
+        <p class="text-muted mb-0">What it is, how it's built, and what's under the hood.</p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <h4 class="fw-semibold">Overview</h4>
+            <p class="text-muted">
+                <strong>my-f3-app</strong> is a demonstration application built on the
+                <a href="https://fatfreeframework.com" target="_blank" rel="noopener">Fat-Free Framework</a>
+                (F3). It pairs a clean Model–View–Controller layout with a JSON REST API and a
+                server-rendered front end styled with Bootstrap 5.
+            </p>
+
+            <h4 class="fw-semibold mt-4">How it's organised</h4>
+            <ul class="text-muted">
+                <li><code>config/</code> — INI files for app settings, database credentials and routes</li>
+                <li><code>app/Controllers/</code> — request handlers (web pages &amp; API)</li>
+                <li><code>app/Models/</code> — data models on top of F3's SQL mapper</li>
+                <li><code>app/Support/</code> — the MySQL bootstrap that builds the schema</li>
+                <li><code>ui/</code> — Bootstrap templates rendered by F3's template engine</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-dark text-white fw-semibold">Tech stack</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Framework</span><span class="text-muted">Fat-Free 3.9</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Language</span><span class="text-muted">PHP 8.3</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Database</span><span class="text-muted">MySQL / MariaDB</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Front end</span><span class="text-muted">Bootstrap 5</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card border-0 shadow-sm mt-4">
+                <div class="card-header bg-dark text-white fw-semibold">API endpoints</div>
+                <ul class="list-group list-group-flush small font-monospace">
+                    <li class="list-group-item">GET&nbsp;&nbsp;&nbsp;&nbsp;/api/users</li>
+                    <li class="list-group-item">POST&nbsp;&nbsp;&nbsp;/api/users</li>
+                    <li class="list-group-item">GET&nbsp;&nbsp;&nbsp;&nbsp;/api/users/@id</li>
+                    <li class="list-group-item">PUT&nbsp;&nbsp;&nbsp;&nbsp;/api/users/@id</li>
+                    <li class="list-group-item">PATCH&nbsp;&nbsp;/api/users/@id</li>
+                    <li class="list-group-item">DELETE&nbsp;/api/users/@id</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
