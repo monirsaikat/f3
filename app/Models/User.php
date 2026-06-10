@@ -9,7 +9,7 @@ use DB\SQL\Mapper;
 class User extends Mapper
 {
     /** Client-writable columns. Everything else (id, timestamps) is managed. */
-    public const FIELDS = ['name', 'email'];
+    public const FIELDS = ['name', 'email', 'gender'];
 
     public function __construct()
     {

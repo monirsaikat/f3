@@ -107,8 +107,6 @@ class UserController extends Controller
             return;
         }
 
-        // PUT: validation guarantees all fields are present, so the whole
-        // resource is overwritten; PATCH only touches the keys sent.
         $user = $this->findOrFail($id);
         $user->copyfrom($this->onlyFields($data));
 

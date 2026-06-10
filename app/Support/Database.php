@@ -56,6 +56,7 @@ final class Database
             'CREATE TABLE IF NOT EXISTS users (
                 id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
                 name       VARCHAR(190) NOT NULL,
+                gender     VARCHAR(10) NULL,
                 email      VARCHAR(190) NOT NULL,
                 created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
