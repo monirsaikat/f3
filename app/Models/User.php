@@ -58,6 +58,7 @@ class User extends Mapper
         return [
             'id'         => (int) $this->get('id'),
             'name'       => $this->get('name'),
+            'gender'     => $this->get('gender'),
             'email'      => $this->get('email'),
             'created_at' => $this->get('created_at'),
             'updated_at' => $this->get('updated_at'),
