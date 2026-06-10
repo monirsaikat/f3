@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\Filterable;
+use App\Traits\HasTimestamps;
 use Audit;
 use Base;
 use DB\SQL\Mapper;
 
 class User extends Mapper
 {
+    use HasTimestamps, Filterable;
+
     /** Client-writable columns. Everything else (id, timestamps) is managed. */
     public const FIELDS = ['name', 'email', 'gender'];
 
@@ -40,15 +44,9 @@ class User extends Mapper
     }
 
     /** Filter for a case-insensitive name/email search, or null for "all". */
-    public static function searchFilter(string $term): ?array
+    public static function searchFilter(string $q): ?array
     {
-        if ($term === '') {
-            return null;
-        }
-
-        $like = '%' . $term . '%';
-
-        return ['name LIKE ? OR email LIKE ?', $like, $like];
+        return static::likeFilter($q, ['name', 'email']);
     }
 
     /**

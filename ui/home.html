@@ -1,10 +1,15 @@
-<section class="hero py-5">
-    <div class="container py-5 text-center">
-        <h1 class="display-4 fw-bold mb-3">{{ @home.title }}</h1>
-        <p class="lead mb-4 mx-auto" style="max-width: 40rem;">{{ @home.subtitle }}</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="{{ @BASE }}/about" class="btn btn-light btn-lg px-4">{{ @home.cta_learn }}</a>
-            <a href="{{ @BASE }}/api/users" class="btn btn-outline-light btn-lg px-4">{{ @home.cta_api }}</a>
+<section class="hero">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 col-xl-7">
+                <span class="hero-eyebrow">Fat-Free Framework 3.9</span>
+                <h1 class="hero-title">{{ @home.title }}</h1>
+                <p class="hero-subtitle mx-auto">{{ @home.subtitle }}</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{{ @BASE }}/about" class="btn btn-primary btn-lg px-4">{{ @home.cta_learn }}</a>
+                    <a href="{{ @BASE }}/api/users" class="btn btn-outline-secondary btn-lg px-4">{{ @home.cta_api }}</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -12,63 +17,77 @@
 <section class="container py-5">
     <div class="row g-4">
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="feature-icon bg-primary-subtle text-primary mb-3">⚡</div>
-                    <h5 class="card-title">{{ @home.f_fast_t }}</h5>
-                    <p class="card-text text-muted">{{ @home.f_fast_d }}</p>
+            <div class="card h-100 border-0">
+                <div class="card-body p-4">
+                    <div class="feature-icon fi-blue">
+                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h5 class="fw-semibold mb-2">{{ @home.f_fast_t }}</h5>
+                    <p class="text-muted mb-0 small">{{ @home.f_fast_d }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="feature-icon bg-success-subtle text-success mb-3">🔌</div>
-                    <h5 class="card-title">{{ @home.f_api_t }}</h5>
-                    <p class="card-text text-muted">{{ @home.f_api_d }}</p>
+            <div class="card h-100 border-0">
+                <div class="card-body p-4">
+                    <div class="feature-icon fi-green">
+                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h5 class="fw-semibold mb-2">{{ @home.f_api_t }}</h5>
+                    <p class="text-muted mb-0 small">{{ @home.f_api_d }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="feature-icon bg-danger-subtle text-danger mb-3">🗄️</div>
-                    <h5 class="card-title">{{ @home.f_db_t }}</h5>
-                    <p class="card-text text-muted">{{ @home.f_db_d }}</p>
+            <div class="card h-100 border-0">
+                <div class="card-body p-4">
+                    <div class="feature-icon fi-amber">
+                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"/>
+                            <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"/>
+                            <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"/>
+                        </svg>
+                    </div>
+                    <h5 class="fw-semibold mb-2">{{ @home.f_db_t }}</h5>
+                    <p class="text-muted mb-0 small">{{ @home.f_db_d }}</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-white border-top py-5">
+<section class="py-5" style="background:var(--white);border-top:1px solid var(--border);">
     <div class="container">
-        <div class="text-center mb-4">
-            <h2 class="fw-bold">{{ @examples.title }}</h2>
-            <p class="text-muted">{{ @examples.subtitle }}</p>
+        <div class="text-center mb-5">
+            <span class="section-label">{{ @examples.title }}</span>
+            <p class="text-muted small mb-0">{{ @examples.subtitle }}</p>
         </div>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ @BASE }}/assets/img/example-routing.svg" class="gallery-img" alt="Routing">
-                    <div class="card-body">
-                        <p class="card-text text-muted mb-0">{{ @examples.routing }}</p>
+                <div class="card h-100 border-0">
+                    <img src="{{ @BASE }}/assets/img/example-routing.svg" class="gallery-img" alt="Routing example">
+                    <div class="card-body px-4 pb-4 pt-3">
+                        <p class="text-muted small mb-0">{{ @examples.routing }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ @BASE }}/assets/img/example-database.svg" class="gallery-img" alt="Database">
-                    <div class="card-body">
-                        <p class="card-text text-muted mb-0">{{ @examples.database }}</p>
+                <div class="card h-100 border-0">
+                    <img src="{{ @BASE }}/assets/img/example-database.svg" class="gallery-img" alt="Database example">
+                    <div class="card-body px-4 pb-4 pt-3">
+                        <p class="text-muted small mb-0">{{ @examples.database }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <img src="{{ @BASE }}/assets/img/example-i18n.svg" class="gallery-img" alt="Internationalization">
-                    <div class="card-body">
-                        <p class="card-text text-muted mb-0">{{ @examples.i18n }}</p>
+                <div class="card h-100 border-0">
+                    <img src="{{ @BASE }}/assets/img/example-i18n.svg" class="gallery-img" alt="i18n example">
+                    <div class="card-body px-4 pb-4 pt-3">
+                        <p class="text-muted small mb-0">{{ @examples.i18n }}</p>
                     </div>
                 </div>
             </div>

@@ -1,56 +1,79 @@
-<section class="bg-white border-bottom py-5">
+<section class="page-header">
     <div class="container">
-        <h1 class="fw-bold mb-2">{{ @about.title }}</h1>
-        <p class="text-muted mb-0">{{ @about.lead }}</p>
+        <span class="section-label">{{ @about.title }}</span>
+        <p class="text-muted mb-0 small">{{ @about.lead }}</p>
     </div>
 </section>
 
 <section class="container py-5">
-    <div class="row g-4">
+    <div class="row g-4 g-lg-5">
         <div class="col-lg-7">
-            <h4 class="fw-semibold">{{ @about.overview_t }}</h4>
-            <p class="text-muted">{{ @about.overview_d }}</p>
+            <h5 class="fw-semibold mb-2">{{ @about.overview_t }}</h5>
+            <p class="text-muted small">{{ @about.overview_d }}</p>
 
-            <h4 class="fw-semibold mt-4">{{ @about.org_t }}</h4>
-            <ul class="text-muted">
+            <h5 class="fw-semibold mt-4 mb-2">{{ @about.org_t }}</h5>
+            <ul class="text-muted small ps-3" style="line-height:1.9;">
                 <li><code>config/</code> — INI files for app settings, database credentials and routes</li>
                 <li><code>app/Controllers/</code> — request handlers (web pages &amp; API)</li>
                 <li><code>app/Models/</code> — data models on top of F3's SQL mapper</li>
+                <li><code>app/Traits/</code> — reusable CRUD traits (ValidatesRequest, FindsOrFails…)</li>
                 <li><code>app/Support/</code> — MySQL bootstrap &amp; localization</li>
                 <li><code>dict/</code> — language dictionaries (en, bn, es)</li>
                 <li><code>ui/</code> — Bootstrap templates rendered by F3's template engine</li>
-                <li><code>assets/</code> — local CSS, JS and images</li>
+                <li><code>assets/</code> — local CSS, JS and images (no CDN)</li>
             </ul>
         </div>
 
         <div class="col-lg-5">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-dark text-white fw-semibold">{{ @about.stack_t }}</div>
+            <div class="card border-0 mb-4">
+                <div class="card-header bg-light text-dark">{{ @about.stack_t }}</div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Framework</span><span class="text-muted">Fat-Free 3.9</span>
+                        <span class="text-muted">Framework</span>
+                        <span class="fw-medium">Fat-Free 3.9</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Language</span><span class="text-muted">PHP 8.3</span>
+                        <span class="text-muted">Language</span>
+                        <span class="fw-medium">PHP 8.3</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Database</span><span class="text-muted">MySQL / MariaDB</span>
+                        <span class="text-muted">Database</span>
+                        <span class="fw-medium">MySQL / MariaDB</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Front end</span><span class="text-muted">Bootstrap 5 (local)</span>
+                        <span class="text-muted">Front end</span>
+                        <span class="fw-medium">Bootstrap 5 (local)</span>
                     </li>
                 </ul>
             </div>
 
-            <div class="card border-0 shadow-sm mt-4">
-                <div class="card-header bg-dark text-white fw-semibold">{{ @about.endpoints_t }}</div>
-                <ul class="list-group list-group-flush small font-monospace">
-                    <li class="list-group-item">GET&nbsp;&nbsp;&nbsp;&nbsp;/api/users</li>
-                    <li class="list-group-item">POST&nbsp;&nbsp;&nbsp;/api/users</li>
-                    <li class="list-group-item">GET&nbsp;&nbsp;&nbsp;&nbsp;/api/users/@id</li>
-                    <li class="list-group-item">PUT&nbsp;&nbsp;&nbsp;&nbsp;/api/users/@id</li>
-                    <li class="list-group-item">PATCH&nbsp;&nbsp;/api/users/@id</li>
-                    <li class="list-group-item">DELETE&nbsp;/api/users/@id</li>
+            <div class="card border-0">
+                <div class="card-header bg-light text-dark">{{ @about.endpoints_t }}</div>
+                <ul class="list-group list-group-flush font-monospace" style="font-size:.8rem;">
+                    <li class="list-group-item d-flex gap-2">
+                        <span class="text-success fw-semibold" style="width:3.5rem;">GET</span>
+                        <span class="text-muted">/api/users</span>
+                    </li>
+                    <li class="list-group-item d-flex gap-2">
+                        <span class="text-primary fw-semibold" style="width:3.5rem;">POST</span>
+                        <span class="text-muted">/api/users</span>
+                    </li>
+                    <li class="list-group-item d-flex gap-2">
+                        <span class="text-success fw-semibold" style="width:3.5rem;">GET</span>
+                        <span class="text-muted">/api/users/@id</span>
+                    </li>
+                    <li class="list-group-item d-flex gap-2">
+                        <span class="text-warning fw-semibold" style="width:3.5rem;">PUT</span>
+                        <span class="text-muted">/api/users/@id</span>
+                    </li>
+                    <li class="list-group-item d-flex gap-2">
+                        <span class="text-info fw-semibold" style="width:3.5rem;">PATCH</span>
+                        <span class="text-muted">/api/users/@id</span>
+                    </li>
+                    <li class="list-group-item d-flex gap-2">
+                        <span class="text-danger fw-semibold" style="width:3.5rem;">DELETE</span>
+                        <span class="text-muted">/api/users/@id</span>
+                    </li>
                 </ul>
             </div>
         </div>

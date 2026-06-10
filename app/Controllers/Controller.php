@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Traits\JsonResponder;
 use Base;
 use Template;
 
@@ -10,6 +11,8 @@ use Template;
  */
 abstract class Controller
 {
+    use JsonResponder;
+
     protected Base $f3;
 
     public function __construct()
@@ -51,7 +54,7 @@ abstract class Controller
     {
         $data = json_decode($this->f3->get('BODY') ?: '', true);
 
-        return is_array($data) ? $data : [];
+        return \is_array($data) ? $data : [];
     }
 
     /** Read a query-string parameter with an optional default. */
