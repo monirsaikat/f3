@@ -87,16 +87,13 @@ final class Database
         );
     }
 
-    /** Add a column only if it does not already exist (DB-agnostic migration). */
+    /**
+     * Add a column only if it does not already exist.
+     * Uses F3's DB\SQL::schema() for introspection — works across MySQL, SQLite and PostgreSQL.
+     */
     private static function ensureColumn(SQL $db, string $table, string $column, string $definition): void
     {
-        $rows = $db->exec(
-            'SELECT COUNT(*) AS c FROM information_schema.COLUMNS
-             WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = :t AND COLUMN_NAME = :c',
-            [':t' => $table, ':c' => $column]
-        );
-
-        if ((int) ($rows[0]['c'] ?? 0) === 0) {
+        if (!\array_key_exists($column, $db->schema($table, null, 0))) {
             $db->exec("ALTER TABLE `$table` ADD COLUMN `$column` $definition");
         }
     }
