@@ -13,6 +13,17 @@ class UserController extends Controller
 {
     private const MAX_LIMIT = 50;
 
+    public function me() {
+        return $this->json([
+            'status' => 'ok',
+            'data' => [
+                'id' => 1,
+                'name' => 'Alice',
+                'email' => 'alice@example.com',
+            ],
+        ]);
+    }
+    
     /** GET /api/users?page=1&limit=10&search=ada */
     public function index(Base $f3): void
     {

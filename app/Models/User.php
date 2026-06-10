@@ -6,12 +6,6 @@ use Audit;
 use Base;
 use DB\SQL\Mapper;
 
-/**
- * User model on top of F3's SQL mapper (MySQL).
- *
- * The mapper reads the live table schema at construction, so adding a
- * column in Database::schema() is all it takes to expose a new field.
- */
 class User extends Mapper
 {
     /** Client-writable columns. Everything else (id, timestamps) is managed. */
