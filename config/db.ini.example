@@ -1,0 +1,8 @@
+; Copy this file to db.ini and fill in your MySQL credentials.
+; db.ini is gitignored so your real password never gets committed.
+[db]
+host     = 127.0.0.1
+port     = 3306
+name     = my_f3_app
+user     = your_mysql_user
+password = your_mysql_password

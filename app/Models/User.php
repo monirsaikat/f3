@@ -4,37 +4,22 @@ namespace App\Models;
 
 use Audit;
 use Base;
-use DB\Jig\Mapper;
+use DB\SQL\Mapper;
 
 /**
- * User model on top of F3's Jig flat-file store.
+ * User model on top of F3's SQL mapper (MySQL).
  *
- * To move to MySQL later: extend DB\SQL\Mapper instead and pass the
- * connection + table name to parent::__construct() — the controller
- * code does not change.
+ * The mapper reads the live table schema at construction, so adding a
+ * column in Database::schema() is all it takes to expose a new field.
  */
 class User extends Mapper
 {
+    /** Client-writable columns. Everything else (id, timestamps) is managed. */
     public const FIELDS = ['name', 'email'];
 
     public function __construct()
     {
-        parent::__construct(Base::instance()->get('JIG'), 'users');
-    }
-
-    /** Public identifier used in URLs (Jig's internal _id stays hidden). */
-    public static function newId(): string
-    {
-        return bin2hex(random_bytes(8));
-    }
-
-    /** Record as a response-ready array, without storage internals. */
-    public function toArray(): array
-    {
-        $row = $this->cast();
-        unset($row['_id']);
-
-        return $row;
+        parent::__construct(Base::instance()->get('DB'), 'users');
     }
 
     /** Filter for a case-insensitive name/email search, or null for "all". */
@@ -44,12 +29,9 @@ class User extends Mapper
             return null;
         }
 
-        return [
-            '(isset(@name) && stripos(@name,?)!==false)'
-            . ' || (isset(@email) && stripos(@email,?)!==false)',
-            $term,
-            $term,
-        ];
+        $like = '%' . $term . '%';
+
+        return ['name LIKE ? OR email LIKE ?', $like, $like];
     }
 
     /**
@@ -74,5 +56,17 @@ class User extends Mapper
         }
 
         return $errors;
+    }
+
+    /** Record as a response-ready array with typed id. */
+    public function toArray(): array
+    {
+        return [
+            'id'         => (int) $this->get('id'),
+            'name'       => $this->get('name'),
+            'email'      => $this->get('email'),
+            'created_at' => $this->get('created_at'),
+            'updated_at' => $this->get('updated_at'),
+        ];
     }
 }

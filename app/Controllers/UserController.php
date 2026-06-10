@@ -61,10 +61,8 @@ class UserController extends Controller
 
         $user = new User();
         $user->copyfrom($this->onlyFields($data));
-        $user->id = User::newId();
-        $user->save();
 
-        $this->json(['status' => 'ok', 'data' => $user->toArray()], 201);
+        $this->persist($user, 201);
     }
 
     /** PUT /api/users/@id — full replacement of the record. */
@@ -102,9 +100,26 @@ class UserController extends Controller
         // resource is overwritten; PATCH only touches the keys sent.
         $user = $this->findOrFail($id);
         $user->copyfrom($this->onlyFields($data));
-        $user->save();
 
-        $this->json(['status' => 'ok', 'data' => $user->toArray()]);
+        $this->persist($user, 200);
+    }
+
+    /** Save a mapper, turning a duplicate-email collision into a 409. */
+    private function persist(User $user, int $status): void
+    {
+        try {
+            $user->save();
+        } catch (\PDOException $e) {
+            // SQLSTATE 23000 = integrity constraint violation (unique email)
+            if ($e->getCode() === '23000') {
+                $this->json(['status' => 'error', 'errors' => ['email is already taken']], 409);
+
+                return;
+            }
+            throw $e;
+        }
+
+        $this->json(['status' => 'ok', 'data' => $user->toArray()], $status);
     }
 
     /** Whitelist the writable fields, dropping anything else the client sent. */
@@ -117,7 +132,7 @@ class UserController extends Controller
     private function findOrFail(string $id): User
     {
         $user = new User();
-        $user->load(['isset(@id) && @id == ?', $id]);
+        $user->load(['id = ?', $id]);
 
         if ($user->dry()) {
             $this->abort(404, "User '{$id}' not found");

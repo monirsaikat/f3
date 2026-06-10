@@ -2,13 +2,16 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use App\Support\Database;
+
 $f3 = Base::instance();
 
 $f3->config(__DIR__ . '/config/config.ini');
+$f3->config(__DIR__ . '/config/db.ini');
 $f3->config(__DIR__ . '/config/routes.ini');
 
-// Flat-file JSON database (swap for DB\SQL when you outgrow it)
-$f3->set('JIG', new DB\Jig(__DIR__ . '/data/', DB\Jig::FORMAT_JSON));
+// Connect to MySQL and self-provision the schema (no migrations to run).
+Database::boot($f3);
 
 // Errors as JSON so API clients never get an HTML page
 $f3->set('ONERROR', function (Base $f3) {
