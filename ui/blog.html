@@ -1,0 +1,103 @@
+<!-- ===== Page header ===== -->
+<section class="page-header">
+  <div class="container">
+    <h1>{{ @blog_settings.page_title }}</h1>
+    <div class="breadcrumb-atrio"><a href="{{ @BASE }}/">Home</a> / Blog</div>
+  </div>
+</section>
+
+<!-- ===== Posts grid ===== -->
+<section class="section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="post-card notched">
+          <div class="img-ph short">Post image</div>
+          <div class="post-body">
+            <div class="post-meta"><b>Strategy</b> · Jun 02, 2026</div>
+            <h3><a href="#">Why most growth plans fail in the first 90 days</a></h3>
+            <p>Ambition isn't the problem — sequencing is. Here's the framework we use to keep early momentum from collapsing.</p>
+            <a href="#" class="card-link">Read article</a>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="post-card notched">
+          <div class="img-ph short light">Post image</div>
+          <div class="post-body">
+            <div class="post-meta"><b>Design</b> · May 24, 2026</div>
+            <h3><a href="#">A brand refresh checklist for teams without a design lead</a></h3>
+            <p>You don't need a full rebrand to look credible. These eight fixes cover 80% of the gap.</p>
+            <a href="#" class="card-link">Read article</a>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="post-card notched">
+          <div class="img-ph short">Post image</div>
+          <div class="post-body">
+            <div class="post-meta"><b>Engineering</b> · May 15, 2026</div>
+            <h3><a href="#">Choosing a tech stack your team can actually maintain</a></h3>
+            <p>The best stack isn't the newest one — it's the one your next three hires already know.</p>
+            <a href="#" class="card-link">Read article</a>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="post-card notched">
+          <div class="img-ph short light">Post image</div>
+          <div class="post-body">
+            <div class="post-meta"><b>Marketing</b> · May 06, 2026</div>
+            <h3><a href="#">SEO in 2026: what still works and what to stop doing</a></h3>
+            <p>Search behavior changed faster in two years than in the previous ten. Here's where to refocus.</p>
+            <a href="#" class="card-link">Read article</a>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="post-card notched">
+          <div class="img-ph short">Post image</div>
+          <div class="post-body">
+            <div class="post-meta"><b>Strategy</b> · Apr 28, 2026</div>
+            <h3><a href="#">Pricing pages that convert: lessons from 40 redesigns</a></h3>
+            <p>Patterns we've seen repeat across every industry — and the one mistake nearly everyone makes.</p>
+            <a href="#" class="card-link">Read article</a>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal">
+        <article class="post-card notched">
+          <div class="img-ph short light">Post image</div>
+          <div class="post-body">
+            <div class="post-meta"><b>Engineering</b> · Apr 17, 2026</div>
+            <h3><a href="#">How we cut a client's page load time from 6s to 1.2s</a></h3>
+            <p>A practical case study in performance budgets, image strategy and ruthless script auditing.</p>
+            <a href="#" class="card-link">Read article</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <nav class="pagination-atrio" aria-label="Blog pagination">
+      <a href="#" class="current">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">→</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section-tight bg-mist cta-band">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <h2>{{ @blog_settings.cta_title }}</h2>
+        <p class="section-lead mb-0">{{ @blog_settings.cta_lead }}</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{{ @BASE }}/contact" class="btn-atrio">{{ @blog_settings.cta_button }}</a>
+      </div>
+    </div>
+  </div>
+</section>

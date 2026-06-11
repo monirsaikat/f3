@@ -1,0 +1,158 @@
+<form method="post" action="{{ @BASE }}/admin/settings/home">
+  <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+
+  <!-- Hero -->
+  <div class="adm-card">
+    <div class="adm-card-header">Hero Section</div>
+
+    <div class="adm-field">
+      <label for="hero_eyebrow">Eyebrow Text</label>
+      <input type="text" id="hero_eyebrow" name="hero_eyebrow" class="adm-input"
+             value="{{ @settings.hero_eyebrow }}">
+      <div class="adm-hint">Small label above the main headline, e.g. "Business · Consulting · Digital".</div>
+    </div>
+
+    <div class="adm-field">
+      <label for="hero_title">Main Headline</label>
+      <input type="text" id="hero_title" name="hero_title" class="adm-input"
+             value="{{ @settings.hero_title }}">
+    </div>
+
+    <div class="adm-field">
+      <label for="hero_lead">Lead Paragraph</label>
+      <textarea id="hero_lead" name="hero_lead" class="adm-textarea"
+                rows="3">{{ @settings.hero_lead }}</textarea>
+    </div>
+
+    <div class="adm-row">
+      <div class="adm-field">
+        <label for="hero_cta_primary">Primary CTA Button</label>
+        <input type="text" id="hero_cta_primary" name="hero_cta_primary" class="adm-input"
+               value="{{ @settings.hero_cta_primary }}">
+      </div>
+      <div class="adm-field">
+        <label for="hero_cta_secondary">Secondary CTA Button</label>
+        <input type="text" id="hero_cta_secondary" name="hero_cta_secondary" class="adm-input"
+               value="{{ @settings.hero_cta_secondary }}">
+      </div>
+    </div>
+
+    <div class="adm-row">
+      <div class="adm-field">
+        <label for="hero_badge_number">Badge Number</label>
+        <input type="text" id="hero_badge_number" name="hero_badge_number" class="adm-input"
+               value="{{ @settings.hero_badge_number }}">
+        <div class="adm-hint">e.g. "12+"</div>
+      </div>
+      <div class="adm-field">
+        <label for="hero_badge_text">Badge Label</label>
+        <input type="text" id="hero_badge_text" name="hero_badge_text" class="adm-input"
+               value="{{ @settings.hero_badge_text }}">
+        <div class="adm-hint">e.g. "Years of expertise"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="adm-card">
+    <div class="adm-card-header">Statistics Bar</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
+      <!-- Stat 1 -->
+      <div>
+        <div style="font-size:11px;font-family:var(--font-mono,monospace);text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px;">Stat 1</div>
+        <div class="adm-row" style="grid-template-columns:1fr 60px 1fr;">
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Number</label>
+            <input type="text" name="stat1_count" class="adm-input" value="{{ @settings.stat1_count }}">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Suffix</label>
+            <input type="text" name="stat1_suffix" class="adm-input" value="{{ @settings.stat1_suffix }}" placeholder="+">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Label</label>
+            <input type="text" name="stat1_label" class="adm-input" value="{{ @settings.stat1_label }}">
+          </div>
+        </div>
+      </div>
+      <!-- Stat 2 -->
+      <div>
+        <div style="font-size:11px;font-family:var(--font-mono,monospace);text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px;">Stat 2</div>
+        <div class="adm-row" style="grid-template-columns:1fr 60px 1fr;">
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Number</label>
+            <input type="text" name="stat2_count" class="adm-input" value="{{ @settings.stat2_count }}">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Suffix</label>
+            <input type="text" name="stat2_suffix" class="adm-input" value="{{ @settings.stat2_suffix }}" placeholder="%">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Label</label>
+            <input type="text" name="stat2_label" class="adm-input" value="{{ @settings.stat2_label }}">
+          </div>
+        </div>
+      </div>
+      <!-- Stat 3 -->
+      <div>
+        <div style="font-size:11px;font-family:var(--font-mono,monospace);text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px;">Stat 3</div>
+        <div class="adm-row" style="grid-template-columns:1fr 60px 1fr;">
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Number</label>
+            <input type="text" name="stat3_count" class="adm-input" value="{{ @settings.stat3_count }}">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Suffix</label>
+            <input type="text" name="stat3_suffix" class="adm-input" value="{{ @settings.stat3_suffix }}" placeholder="+">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Label</label>
+            <input type="text" name="stat3_label" class="adm-input" value="{{ @settings.stat3_label }}">
+          </div>
+        </div>
+      </div>
+      <!-- Stat 4 -->
+      <div>
+        <div style="font-size:11px;font-family:var(--font-mono,monospace);text-transform:uppercase;letter-spacing:.1em;color:#6b7280;margin-bottom:8px;">Stat 4</div>
+        <div class="adm-row" style="grid-template-columns:1fr 60px 1fr;">
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Number</label>
+            <input type="text" name="stat4_count" class="adm-input" value="{{ @settings.stat4_count }}">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Suffix</label>
+            <input type="text" name="stat4_suffix" class="adm-input" value="{{ @settings.stat4_suffix }}">
+          </div>
+          <div class="adm-field" style="margin-bottom:0;">
+            <label>Label</label>
+            <input type="text" name="stat4_label" class="adm-input" value="{{ @settings.stat4_label }}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Band -->
+  <div class="adm-card">
+    <div class="adm-card-header">Bottom CTA Band</div>
+
+    <div class="adm-field">
+      <label for="cta_title">Headline</label>
+      <input type="text" id="cta_title" name="cta_title" class="adm-input"
+             value="{{ @settings.cta_title }}">
+    </div>
+    <div class="adm-field">
+      <label for="cta_lead">Supporting Text</label>
+      <input type="text" id="cta_lead" name="cta_lead" class="adm-input"
+             value="{{ @settings.cta_lead }}">
+    </div>
+    <div class="adm-field">
+      <label for="cta_button">Button Label</label>
+      <input type="text" id="cta_button" name="cta_button" class="adm-input"
+             value="{{ @settings.cta_button }}">
+    </div>
+  </div>
+
+  <button type="submit" class="adm-btn-save">✓ Save Home Settings</button>
+</form>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\SiteSetting;
 use App\Support\Auth;
 
 /**
@@ -22,6 +23,9 @@ abstract class WebController extends Controller
         // Move any pending flash message into the hive, then clear it.
         $this->f3->set('flash', $this->f3->get('SESSION.flash'));
         $this->f3->clear('SESSION.flash');
+
+        // General site settings available in every layout (site name, footer, etc.).
+        $this->f3->set('general_settings', SiteSetting::withDefaults('general'));
     }
 
     /** Redirect logged-in users away from guest-only pages (login/register). */
@@ -38,6 +42,15 @@ abstract class WebController extends Controller
         if (!Auth::check()) {
             $this->flash('warning', 'Please sign in to continue.');
             $this->f3->reroute('@login');
+        }
+    }
+
+    /** Abort if the POST CSRF token doesn't match the session token. */
+    protected function verifyCsrf(): void
+    {
+        if (!Auth::checkCsrf($this->f3->get('POST.csrf'))) {
+            $this->flash('danger', 'Your session expired. Please try again.');
+            $this->f3->reroute($this->f3->get('PATH'));
         }
     }
 

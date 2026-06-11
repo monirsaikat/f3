@@ -1,0 +1,58 @@
+<form method="post" action="{{ @BASE }}/admin/settings/about">
+  <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+
+  <!-- Story section -->
+  <div class="adm-card">
+    <div class="adm-card-header">Story Section</div>
+
+    <div class="adm-field">
+      <label for="story_eyebrow">Eyebrow Text</label>
+      <input type="text" id="story_eyebrow" name="story_eyebrow" class="adm-input"
+             value="{{ @settings.story_eyebrow }}">
+      <div class="adm-hint">Small label above the title, e.g. "Our story".</div>
+    </div>
+
+    <div class="adm-field">
+      <label for="story_title">Title</label>
+      <input type="text" id="story_title" name="story_title" class="adm-input"
+             value="{{ @settings.story_title }}">
+    </div>
+
+    <div class="adm-field">
+      <label for="story_lead">Lead Paragraph</label>
+      <textarea id="story_lead" name="story_lead" class="adm-textarea"
+                rows="4">{{ @settings.story_lead }}</textarea>
+      <div class="adm-hint">Displayed as a larger, highlighted paragraph.</div>
+    </div>
+
+    <div class="adm-field">
+      <label for="story_body">Body Paragraph</label>
+      <textarea id="story_body" name="story_body" class="adm-textarea"
+                rows="3">{{ @settings.story_body }}</textarea>
+      <div class="adm-hint">Displayed below the lead in muted text.</div>
+    </div>
+  </div>
+
+  <!-- CTA Band -->
+  <div class="adm-card">
+    <div class="adm-card-header">Bottom CTA Band</div>
+
+    <div class="adm-field">
+      <label for="cta_title">Headline</label>
+      <input type="text" id="cta_title" name="cta_title" class="adm-input"
+             value="{{ @settings.cta_title }}">
+    </div>
+    <div class="adm-field">
+      <label for="cta_lead">Supporting Text</label>
+      <input type="text" id="cta_lead" name="cta_lead" class="adm-input"
+             value="{{ @settings.cta_lead }}">
+    </div>
+    <div class="adm-field">
+      <label for="cta_button">Button Label</label>
+      <input type="text" id="cta_button" name="cta_button" class="adm-input"
+             value="{{ @settings.cta_button }}">
+    </div>
+  </div>
+
+  <button type="submit" class="adm-btn-save">✓ Save About Settings</button>
+</form>

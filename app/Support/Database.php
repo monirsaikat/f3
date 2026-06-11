@@ -70,6 +70,19 @@ final class Database
         self::ensureColumn($db, 'users', 'password', 'VARCHAR(255) NULL AFTER email');
 
         $db->exec(
+            'CREATE TABLE IF NOT EXISTS site_settings (
+                id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                section    VARCHAR(50)  NOT NULL,
+                `key`      VARCHAR(100) NOT NULL,
+                value      TEXT         NULL,
+                created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                PRIMARY KEY (id),
+                UNIQUE KEY uniq_site_settings (section, `key`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
+        );
+
+        $db->exec(
             'CREATE TABLE IF NOT EXISTS api_tokens (
                 id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
                 user_id      INT UNSIGNED NOT NULL,

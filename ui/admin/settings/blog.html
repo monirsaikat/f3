@@ -1,0 +1,38 @@
+<form method="post" action="{{ @BASE }}/admin/settings/blog">
+  <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+
+  <!-- Page header -->
+  <div class="adm-card">
+    <div class="adm-card-header">Page Header</div>
+
+    <div class="adm-field">
+      <label for="page_title">Page Title</label>
+      <input type="text" id="page_title" name="page_title" class="adm-input"
+             value="{{ @settings.page_title }}">
+      <div class="adm-hint">Displayed as the &lt;h1&gt; in the page header banner.</div>
+    </div>
+  </div>
+
+  <!-- CTA Band -->
+  <div class="adm-card">
+    <div class="adm-card-header">Newsletter CTA Band</div>
+
+    <div class="adm-field">
+      <label for="cta_title">Headline</label>
+      <input type="text" id="cta_title" name="cta_title" class="adm-input"
+             value="{{ @settings.cta_title }}">
+    </div>
+    <div class="adm-field">
+      <label for="cta_lead">Supporting Text</label>
+      <input type="text" id="cta_lead" name="cta_lead" class="adm-input"
+             value="{{ @settings.cta_lead }}">
+    </div>
+    <div class="adm-field">
+      <label for="cta_button">Button Label</label>
+      <input type="text" id="cta_button" name="cta_button" class="adm-input"
+             value="{{ @settings.cta_button }}">
+    </div>
+  </div>
+
+  <button type="submit" class="adm-btn-save">✓ Save Blog Settings</button>
+</form>

@@ -1,81 +1,122 @@
+<!-- ===== Page header ===== -->
 <section class="page-header">
-    <div class="container">
-        <span class="section-label">{{ @about.title }}</span>
-        <p class="text-muted mb-0 small">{{ @about.lead }}</p>
-    </div>
+  <div class="container">
+    <h1>About Us</h1>
+    <div class="breadcrumb-atrio"><a href="{{ @BASE }}/">Home</a> / About</div>
+  </div>
 </section>
 
-<section class="container py-5">
-    <div class="row g-4 g-lg-5">
-        <div class="col-lg-7">
-            <h5 class="fw-semibold mb-2">{{ @about.overview_t }}</h5>
-            <p class="text-muted small">{{ @about.overview_d }}</p>
-
-            <h5 class="fw-semibold mt-4 mb-2">{{ @about.org_t }}</h5>
-            <ul class="text-muted small ps-3" style="line-height:1.9;">
-                <li><code>config/</code> — INI files for app settings, database credentials and routes</li>
-                <li><code>app/Controllers/</code> — request handlers (web pages &amp; API)</li>
-                <li><code>app/Models/</code> — data models on top of F3's SQL mapper</li>
-                <li><code>app/Traits/</code> — reusable CRUD traits (ValidatesRequest, FindsOrFails…)</li>
-                <li><code>app/Support/</code> — MySQL bootstrap &amp; localization</li>
-                <li><code>dict/</code> — language dictionaries (en, bn, es)</li>
-                <li><code>ui/</code> — Bootstrap templates rendered by F3's template engine</li>
-                <li><code>assets/</code> — local CSS, JS and images (no CDN)</li>
-            </ul>
+<!-- ===== Story ===== -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="eyebrow">{{ @about_settings.story_eyebrow }}</span>
+        <h2 class="section-title">{{ @about_settings.story_title }}</h2>
+        <p class="section-lead mb-4">{{ @about_settings.story_lead }}</p>
+        <p style="color:var(--muted);">{{ @about_settings.story_body }}</p>
+        <div class="counter-row">
+          <div class="counter-box"><strong><span class="counter" data-count="12">0</span>+</strong><span>Years</span></div>
+          <div class="counter-box"><strong><span class="counter" data-count="320">0</span>+</strong><span>Projects</span></div>
+          <div class="counter-box"><strong><span class="counter" data-count="98">0</span>%</strong><span>Retention</span></div>
         </div>
-
-        <div class="col-lg-5">
-            <div class="card border-0 mb-4">
-                <div class="card-header bg-light text-dark">{{ @about.stack_t }}</div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span class="text-muted">Framework</span>
-                        <span class="fw-medium">Fat-Free 3.9</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span class="text-muted">Language</span>
-                        <span class="fw-medium">PHP 8.3</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span class="text-muted">Database</span>
-                        <span class="fw-medium">MySQL / MariaDB</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span class="text-muted">Front end</span>
-                        <span class="fw-medium">Bootstrap 5 (local)</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card border-0">
-                <div class="card-header bg-light text-dark">{{ @about.endpoints_t }}</div>
-                <ul class="list-group list-group-flush font-monospace" style="font-size:.8rem;">
-                    <li class="list-group-item d-flex gap-2">
-                        <span class="text-success fw-semibold" style="width:3.5rem;">GET</span>
-                        <span class="text-muted">/api/users</span>
-                    </li>
-                    <li class="list-group-item d-flex gap-2">
-                        <span class="text-primary fw-semibold" style="width:3.5rem;">POST</span>
-                        <span class="text-muted">/api/users</span>
-                    </li>
-                    <li class="list-group-item d-flex gap-2">
-                        <span class="text-success fw-semibold" style="width:3.5rem;">GET</span>
-                        <span class="text-muted">/api/users/@id</span>
-                    </li>
-                    <li class="list-group-item d-flex gap-2">
-                        <span class="text-warning fw-semibold" style="width:3.5rem;">PUT</span>
-                        <span class="text-muted">/api/users/@id</span>
-                    </li>
-                    <li class="list-group-item d-flex gap-2">
-                        <span class="text-info fw-semibold" style="width:3.5rem;">PATCH</span>
-                        <span class="text-muted">/api/users/@id</span>
-                    </li>
-                    <li class="list-group-item d-flex gap-2">
-                        <span class="text-danger fw-semibold" style="width:3.5rem;">DELETE</span>
-                        <span class="text-muted">/api/users/@id</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+      </div>
+      <div class="col-lg-6 reveal">
+        <div class="img-ph tall notched">Team photo — replace</div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== Values ===== -->
+<section class="section bg-mist">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="eyebrow">How we work</span>
+      <h2 class="section-title">The principles behind every engagement</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">◎</div>
+          <h3>Outcome first</h3>
+          <p>Every project starts with the business metric it should move. If we can't measure it, we redesign the scope until we can.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">⊞</div>
+          <h3>Senior only</h3>
+          <p>No bait-and-switch staffing. The people in the pitch are the people doing the work, start to finish.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">⟁</div>
+          <h3>Radical clarity</h3>
+          <p>Weekly demos, open budgets and direct answers — including the uncomfortable ones.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">∞</div>
+          <h3>Built to last</h3>
+          <p>We hand over documented, maintainable work your in-house team can run without us.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Team ===== -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-end mb-5 g-3">
+      <div class="col-lg-8">
+        <span class="eyebrow">Leadership</span>
+        <h2 class="section-title">The people you'll work with</h2>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="team-card notched">
+          <div class="img-ph short">Photo</div>
+          <div class="team-body"><h4>Nadia Rahman</h4><span>CEO &amp; Strategy</span></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="team-card notched">
+          <div class="img-ph short light">Photo</div>
+          <div class="team-body"><h4>Marcus Chen</h4><span>Creative Director</span></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="team-card notched">
+          <div class="img-ph short">Photo</div>
+          <div class="team-body"><h4>Priya Nair</h4><span>Head of Engineering</span></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3 reveal">
+        <div class="team-card notched">
+          <div class="img-ph short light">Photo</div>
+          <div class="team-body"><h4>Tomás Vieira</h4><span>Growth Lead</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section-tight bg-pine cta-band">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <h2>{{ @about_settings.cta_title }}</h2>
+        <p class="section-lead mb-0">{{ @about_settings.cta_lead }}</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{{ @BASE }}/contact" class="btn-atrio-light">{{ @about_settings.cta_button }}</a>
+      </div>
+    </div>
+  </div>
 </section>

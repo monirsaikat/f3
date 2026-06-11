@@ -3,106 +3,149 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ @title }} · my-f3-app</title>
-    <link rel="stylesheet" href="{{ @BASE }}/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ @BASE }}/assets/css/app.css">
+    <title>{{ @title }} · {{ @general_settings.site_name }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="{{ @BASE }}/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ @BASE }}/assets/css/atrio.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
-    <nav class="navbar navbar-expand-lg site-nav">
-        <div class="container">
-            <a class="navbar-brand" href="{{ @BASE }}/">
-                <img src="{{ @BASE }}/assets/img/logo.svg" alt="" class="brand-logo">
-                my-f3-app
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#nav" aria-controls="nav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                    <li class="nav-item">
-                        <a class="nav-link {{ @active=='home'?'active':'' }}" href="{{ @BASE }}/">{{ @nav.home }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ @active=='about'?'active':'' }}" href="{{ @BASE }}/about">{{ @nav.about }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ @BASE }}/api/users">{{ @nav.api }}</a>
-                    </li>
-
-                    <check if="{{ @current_user }}">
-                        <true>
-                            <li class="nav-item dropdown ms-lg-1">
-                                <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
-                                          style="width:1.75rem;height:1.75rem;font-size:.75rem;font-weight:700;flex-shrink:0;">
-                                        {{ substr(@current_user.name,0,1) }}
-                                    </span>
-                                    {{ @current_user.name }}
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="{{ @BASE }}/dashboard">{{ @nav.dashboard }}</a></li>
-                                    <li><hr class="dropdown-divider my-1"></li>
-                                    <li>
-                                        <form method="post" action="{{ @BASE }}/logout" class="px-2 pb-1 pt-0">
-                                            <input type="hidden" name="csrf" value="{{ @csrf_token }}">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger w-100">{{ @nav.logout }}</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </true>
-                        <false>
-                            <li class="nav-item ms-lg-1">
-                                <a class="nav-link {{ @active=='login'?'active':'' }}" href="{{ @BASE }}/login">{{ @nav.login }}</a>
-                            </li>
-                            <li class="nav-item ms-lg-1">
-                                <a class="btn btn-primary btn-sm px-3" href="{{ @BASE }}/register">{{ @nav.register }}</a>
-                            </li>
-                        </false>
-                    </check>
-
-                    <li class="nav-item dropdown ms-lg-1">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ @current_lang_name }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <repeat group="{{ @languages }}" key="{{ @code }}" value="{{ @name }}">
-                                <li>
-                                    <a class="dropdown-item {{ @code==@current_lang?'active':'' }}"
-                                       href="?lang={{ @code }}">{{ @name }}</a>
-                                </li>
-                            </repeat>
-                        </ul>
-                    </li>
-                </ul>
+<header class="site-header">
+  <div class="container">
+    <div class="nav-wrap">
+      <a href="{{ @BASE }}/" class="brand"><span class="brand-mark"></span>{{ @general_settings.site_name }}</a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="{{ @BASE }}/" class="{{ @active=='home'?'active':'' }}">Home</a></li>
+          <li><a href="{{ @BASE }}/about" class="{{ @active=='about'?'active':'' }}">About</a></li>
+          <li><a href="{{ @BASE }}/services" class="{{ @active=='services'?'active':'' }}">Services</a></li>
+          <li><a href="{{ @BASE }}/portfolio" class="{{ @active=='portfolio'?'active':'' }}">Portfolio</a></li>
+          <li><a href="{{ @BASE }}/blog" class="{{ @active=='blog'?'active':'' }}">Blog</a></li>
+          <li><a href="{{ @BASE }}/contact" class="{{ @active=='contact'?'active':'' }}">Contact</a></li>
+          <check if="{{ @current_user }}">
+            <true>
+              <li class="nav-cta d-lg-none"><a href="{{ @BASE }}/dashboard" class="btn-atrio">Dashboard</a></li>
+            </true>
+            <false>
+              <li class="nav-cta d-lg-none"><a href="{{ @BASE }}/contact" class="btn-atrio">Get a Quote</a></li>
+            </false>
+          </check>
+        </ul>
+      </nav>
+      <div class="d-none d-lg-flex align-items-center gap-3">
+        <check if="{{ @current_user }}">
+          <true>
+            <div class="dropdown">
+              <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                 class="d-flex align-items-center gap-2"
+                 style="font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--ink);text-decoration:none;">
+                <span style="width:36px;height:36px;background:var(--pine);color:var(--saffron);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);">{{ substr(@current_user.name,0,1) }}</span>
+                {{ @current_user.name }}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" style="border-radius:0;border-color:var(--line);">
+                <li><a class="dropdown-item" href="{{ @BASE }}/dashboard">{{ @nav.dashboard }}</a></li>
+                <li><a class="dropdown-item" href="{{ @BASE }}/admin">Admin Panel</a></li>
+                <li><hr class="dropdown-divider my-1"></li>
+                <li>
+                  <form method="post" action="{{ @BASE }}/logout" class="px-2 pb-1 pt-0">
+                    <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+                    <button type="submit" class="btn btn-sm btn-outline-danger w-100">{{ @nav.logout }}</button>
+                  </form>
+                </li>
+              </ul>
             </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow-1">
-        <check if="{{ @flash }}">
-            <div class="container mt-3">
-                <div class="alert alert-{{ @flash.type }} alert-dismissible fade show" role="alert">
-                    {{ @flash.message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            </div>
+          </true>
+          <false>
+            <a href="{{ @BASE }}/login" class="btn-atrio-ghost" style="padding:10px 22px;font-size:13px;">Sign In</a>
+            <a href="{{ @BASE }}/register" class="btn-atrio">Get Started</a>
+          </false>
         </check>
-        <include href="{{ @content }}" />
-    </main>
-
-    <footer class="site-footer mt-auto">
-        <div class="container d-flex flex-wrap justify-content-between align-items-center">
-            <span>&copy; {{ date('Y') }} my-f3-app</span>
-            <span>{{ @footer.built }}</span>
+        <div class="dropdown">
+          <a href="#" data-bs-toggle="dropdown" aria-expanded="false"
+             style="font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;">
+            {{ @current_lang_name }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" style="border-radius:0;min-width:130px;border-color:var(--line);">
+            <repeat group="{{ @languages }}" key="{{ @code }}" value="{{ @name }}">
+              <li><a class="dropdown-item {{ @code==@current_lang?'active':'' }}" href="?lang={{ @code }}">{{ @name }}</a></li>
+            </repeat>
+          </ul>
         </div>
-    </footer>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
 
-    <script src="{{ @BASE }}/assets/js/bootstrap.bundle.min.js"></script>
+<check if="{{ @flash }}">
+  <div class="container" style="margin-top:16px;">
+    <div class="alert alert-{{ @flash.type }} alert-dismissible fade show"
+         style="border-radius:0;border-left:4px solid var(--pine);" role="alert">
+      {{ @flash.message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</check>
+
+<include href="{{ @content }}" />
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4 footer-brand">
+        <a href="{{ @BASE }}/" class="brand" style="color:#fff;"><span class="brand-mark"></span>{{ @general_settings.site_name }}</a>
+        <p>{{ @general_settings.site_tagline }}</p>
+        <div class="footer-social">
+          <a href="#" aria-label="GitHub">gh</a>
+          <a href="#" aria-label="Twitter">x</a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="{{ @BASE }}/about">About</a></li>
+          <li><a href="{{ @BASE }}/services">Services</a></li>
+          <li><a href="{{ @BASE }}/portfolio">Portfolio</a></li>
+          <li><a href="{{ @BASE }}/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h5>Account</h5>
+        <ul>
+          <li><a href="{{ @BASE }}/login">Sign In</a></li>
+          <li><a href="{{ @BASE }}/register">Register</a></li>
+          <li><a href="{{ @BASE }}/dashboard">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h5>Developer</h5>
+        <ul>
+          <li><a href="{{ @BASE }}/api/users">REST API</a></li>
+          <li><a href="{{ @BASE }}/contact">Contact</a></li>
+        </ul>
+        <div class="mt-4" style="border-top:1px solid rgba(255,255,255,.1);padding-top:16px;">
+          <repeat group="{{ @languages }}" key="{{ @code }}" value="{{ @name }}">
+            <a href="?lang={{ @code }}"
+               style="color:{{ @code==@current_lang?'var(--saffron)':'#9DB3AA' }};margin-right:14px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;">{{ @name }}</a>
+          </repeat>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; {{ date('Y') }} {{ @general_settings.site_name }}</span>
+      <span>{{ @general_settings.footer_copy }}</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ @BASE }}/assets/js/bootstrap.bundle.min.js"></script>
+<script src="{{ @BASE }}/assets/js/atrio.js"></script>
 </body>
 </html>

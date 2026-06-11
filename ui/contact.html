@@ -1,0 +1,88 @@
+<!-- ===== Page header ===== -->
+<section class="page-header">
+  <div class="container">
+    <h1>{{ @contact_settings.page_title }}</h1>
+    <div class="breadcrumb-atrio"><a href="{{ @BASE }}/">Home</a> / Contact</div>
+  </div>
+</section>
+
+<!-- ===== Info cards + form ===== -->
+<section class="section">
+  <div class="container">
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 reveal">
+        <div class="contact-info-card">
+          <div class="icon-box">⌖</div>
+          <h4>Visit us</h4>
+          <p style="white-space:pre-line;">{{ @contact_settings.address }}</p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="contact-info-card">
+          <div class="icon-box">✉</div>
+          <h4>Email us</h4>
+          <p>
+            <a href="mailto:{{ @contact_settings.email_primary }}">{{ @contact_settings.email_primary }}</a><br>
+            <a href="mailto:{{ @contact_settings.email_support }}">{{ @contact_settings.email_support }}</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="contact-info-card">
+          <div class="icon-box">✆</div>
+          <h4>Call us</h4>
+          <p>
+            <a href="tel:{{ @contact_settings.phone }}">{{ @contact_settings.phone }}</a><br>
+            {{ @contact_settings.phone_hours }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <span class="eyebrow">Send a message</span>
+        <h2 class="section-title">{{ @contact_settings.form_title }}</h2>
+        <p class="section-lead mb-4">{{ @contact_settings.form_lead }}</p>
+
+        <div class="form-success">✓ Thanks! Your message has been sent. We'll get back to you shortly.</div>
+
+        <form id="contactForm" class="form-atrio" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <label for="cf-name">Your name</label>
+              <input type="text" class="form-control" id="cf-name" placeholder="Jane Cooper">
+              <div class="field-error">Please enter your name (min 2 characters).</div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <label for="cf-email">Email address</label>
+              <input type="email" class="form-control" id="cf-email" placeholder="jane@company.com">
+              <div class="field-error">Please enter a valid email address.</div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="cf-subject">Subject</label>
+            <input type="text" class="form-control" id="cf-subject" placeholder="Website redesign for...">
+            <div class="field-error">Please enter a subject (min 3 characters).</div>
+          </div>
+          <div class="mb-4">
+            <label for="cf-message">Message</label>
+            <textarea class="form-control" id="cf-message" rows="6" placeholder="Tell us about your goals, timeline and budget..."></textarea>
+            <div class="field-error">Please write a message (min 10 characters).</div>
+          </div>
+          <button type="submit" class="btn-atrio">Send Message</button>
+        </form>
+      </div>
+      <div class="col-lg-5">
+        <div class="map-ph notched">
+          Map embed — replace with iframe
+        </div>
+        <div class="card-atrio mt-4">
+          <h3>Prefer a call?</h3>
+          <p>Book a free 30-minute discovery call. No pitch deck, just a conversation about your goals and whether we're a fit.</p>
+          <a href="#" class="card-link">Open scheduler</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -98,7 +98,7 @@ class AuthController extends WebController
     }
 
     /** GET /dashboard (protected) */
-    public function dashboard(Base $f3): void
+    public function dashboard(): void
     {
         $this->requireAuth();
         $this->view('auth/dashboard.html', [
@@ -108,12 +108,4 @@ class AuthController extends WebController
         ]);
     }
 
-    /** Abort form submissions that fail the CSRF check. */
-    private function verifyCsrf(): void
-    {
-        if (!Auth::checkCsrf($this->f3->get('POST.csrf'))) {
-            $this->flash('danger', 'Your session expired. Please try again.');
-            $this->f3->reroute($this->f3->get('PATH'));
-        }
-    }
 }

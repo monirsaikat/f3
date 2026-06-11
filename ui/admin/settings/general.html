@@ -1,0 +1,49 @@
+<form method="post" action="{{ @BASE }}/admin/settings/general">
+  <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+
+  <!-- Identity -->
+  <div class="adm-card">
+    <div class="adm-card-header">Site Identity</div>
+
+    <div class="adm-field">
+      <label for="site_name">Site Name</label>
+      <input type="text" id="site_name" name="site_name" class="adm-input"
+             value="{{ @settings.site_name }}">
+      <div class="adm-hint">Shown in the navigation brand and browser tab.</div>
+    </div>
+
+    <div class="adm-field">
+      <label for="site_tagline">Footer Tagline</label>
+      <textarea id="site_tagline" name="site_tagline" class="adm-textarea"
+                rows="2">{{ @settings.site_tagline }}</textarea>
+      <div class="adm-hint">Short description shown in the footer brand column.</div>
+    </div>
+
+    <div class="adm-field">
+      <label for="footer_copy">Footer Copyright Text</label>
+      <input type="text" id="footer_copy" name="footer_copy" class="adm-input"
+             value="{{ @settings.footer_copy }}">
+      <div class="adm-hint">Appears in the small footer bar, e.g. "Built with Fat-Free Framework".</div>
+    </div>
+  </div>
+
+  <!-- Social links -->
+  <div class="adm-card">
+    <div class="adm-card-header">Social Links</div>
+
+    <div class="adm-row">
+      <div class="adm-field">
+        <label for="github_url">GitHub URL</label>
+        <input type="text" id="github_url" name="github_url" class="adm-input"
+               value="{{ @settings.github_url }}">
+      </div>
+      <div class="adm-field">
+        <label for="twitter_url">Twitter / X URL</label>
+        <input type="text" id="twitter_url" name="twitter_url" class="adm-input"
+               value="{{ @settings.twitter_url }}">
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="adm-btn-save">✓ Save General Settings</button>
+</form>

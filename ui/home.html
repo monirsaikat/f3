@@ -1,96 +1,198 @@
+<!-- ===== Hero ===== -->
 <section class="hero">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-8 col-xl-7">
-                <span class="hero-eyebrow">Fat-Free Framework 3.9</span>
-                <h1 class="hero-title">{{ @home.title }}</h1>
-                <p class="hero-subtitle mx-auto">{{ @home.subtitle }}</p>
-                <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="{{ @BASE }}/about" class="btn btn-primary btn-lg px-4">{{ @home.cta_learn }}</a>
-                    <a href="{{ @BASE }}/api/users" class="btn btn-outline-secondary btn-lg px-4">{{ @home.cta_api }}</a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="eyebrow">{{ @home_settings.hero_eyebrow }}</span>
+        <h1>{{ @home_settings.hero_title }}</h1>
+        <p class="lead-text">{{ @home_settings.hero_lead }}</p>
+        <div class="hero-actions">
+          <a href="{{ @BASE }}/services" class="btn-atrio-light">{{ @home_settings.hero_cta_primary }}</a>
+          <a href="{{ @BASE }}/portfolio" class="btn-atrio-ghost" style="color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5);">{{ @home_settings.hero_cta_secondary }}</a>
         </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual">
+          <div class="img-ph tall notched">Hero image — replace</div>
+          <div class="hero-badge"><strong>{{ @home_settings.hero_badge_number }}</strong>{{ @home_settings.hero_badge_text }}</div>
+        </div>
+      </div>
     </div>
+    <div class="hero-stats">
+      <div class="stat"><strong><span class="counter" data-count="{{ @home_settings.stat1_count }}">0</span>{{ @home_settings.stat1_suffix }}</strong><span>{{ @home_settings.stat1_label }}</span></div>
+      <div class="stat"><strong><span class="counter" data-count="{{ @home_settings.stat2_count }}">0</span>{{ @home_settings.stat2_suffix }}</strong><span>{{ @home_settings.stat2_label }}</span></div>
+      <div class="stat"><strong><span class="counter" data-count="{{ @home_settings.stat3_count }}">0</span>{{ @home_settings.stat3_suffix }}</strong><span>{{ @home_settings.stat3_label }}</span></div>
+      <div class="stat"><strong><span class="counter" data-count="{{ @home_settings.stat4_count }}">0</span>{{ @home_settings.stat4_suffix }}</strong><span>{{ @home_settings.stat4_label }}</span></div>
+    </div>
+  </div>
 </section>
 
-<section class="container py-5">
+<!-- ===== Client marquee ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Northwind</span><span>Vantage Group</span><span>Helio Labs</span><span>Crestline</span><span>Marlowe &amp; Co</span><span>Bluepeak</span>
+    <span>Northwind</span><span>Vantage Group</span><span>Helio Labs</span><span>Crestline</span><span>Marlowe &amp; Co</span><span>Bluepeak</span>
+  </div>
+</div>
+
+<!-- ===== Services preview ===== -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-end mb-5 g-3">
+      <div class="col-lg-8">
+        <span class="eyebrow">What we do</span>
+        <h2 class="section-title">Services that cover the full journey</h2>
+        <p class="section-lead">From the first strategy workshop to launch and growth, every engagement is built around measurable outcomes.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{{ @BASE }}/services" class="btn-atrio-ghost">All Services</a>
+      </div>
+    </div>
     <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card h-100 border-0">
-                <div class="card-body p-4">
-                    <div class="feature-icon fi-blue">
-                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h5 class="fw-semibold mb-2">{{ @home.f_fast_t }}</h5>
-                    <p class="text-muted mb-0 small">{{ @home.f_fast_d }}</p>
-                </div>
-            </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">◈</div>
+          <h3>Business Strategy</h3>
+          <p>Market research, positioning and operating plans that give your team a clear direction.</p>
+          <a href="{{ @BASE }}/services" class="card-link">Learn more</a>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 border-0">
-                <div class="card-body p-4">
-                    <div class="feature-icon fi-green">
-                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h5 class="fw-semibold mb-2">{{ @home.f_api_t }}</h5>
-                    <p class="text-muted mb-0 small">{{ @home.f_api_d }}</p>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">✦</div>
+          <h3>Brand &amp; Design</h3>
+          <p>Identity systems, design languages and product UI that customers actually remember.</p>
+          <a href="{{ @BASE }}/services" class="card-link">Learn more</a>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 border-0">
-                <div class="card-body p-4">
-                    <div class="feature-icon fi-amber">
-                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"/>
-                            <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"/>
-                            <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"/>
-                        </svg>
-                    </div>
-                    <h5 class="fw-semibold mb-2">{{ @home.f_db_t }}</h5>
-                    <p class="text-muted mb-0 small">{{ @home.f_db_d }}</p>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">⌘</div>
+          <h3>Web Development</h3>
+          <p>Fast, secure, maintainable websites and applications built on modern stacks.</p>
+          <a href="{{ @BASE }}/services" class="card-link">Learn more</a>
         </div>
+      </div>
+      <div class="col-md-6 col-lg-3 reveal">
+        <div class="card-atrio">
+          <div class="icon-box">↗</div>
+          <h3>Growth Marketing</h3>
+          <p>SEO, paid media and lifecycle campaigns tied directly to pipeline and revenue.</p>
+          <a href="{{ @BASE }}/services" class="card-link">Learn more</a>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="py-5" style="background:var(--white);border-top:1px solid var(--border);">
-    <div class="container">
-        <div class="text-center mb-5">
-            <span class="section-label">{{ @examples.title }}</span>
-            <p class="text-muted small mb-0">{{ @examples.subtitle }}</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card h-100 border-0">
-                    <img src="{{ @BASE }}/assets/img/example-routing.svg" class="gallery-img" alt="Routing example">
-                    <div class="card-body px-4 pb-4 pt-3">
-                        <p class="text-muted small mb-0">{{ @examples.routing }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0">
-                    <img src="{{ @BASE }}/assets/img/example-database.svg" class="gallery-img" alt="Database example">
-                    <div class="card-body px-4 pb-4 pt-3">
-                        <p class="text-muted small mb-0">{{ @examples.database }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 border-0">
-                    <img src="{{ @BASE }}/assets/img/example-i18n.svg" class="gallery-img" alt="i18n example">
-                    <div class="card-body px-4 pb-4 pt-3">
-                        <p class="text-muted small mb-0">{{ @examples.i18n }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ===== About split ===== -->
+<section class="section bg-mist">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <div class="img-ph tall notched">About image — replace</div>
+      </div>
+      <div class="col-lg-6">
+        <span class="eyebrow">Who we are</span>
+        <h2 class="section-title">A partner, not just a vendor</h2>
+        <p class="section-lead">We embed with your team, learn how your business actually works, and ship work that holds up long after the engagement ends.</p>
+        <ul class="checklist">
+          <li>Dedicated senior team on every project</li>
+          <li>Transparent weekly reporting and demos</li>
+          <li>Fixed scope, fixed price — no surprises</li>
+          <li>Post-launch support included</li>
+        </ul>
+        <a href="{{ @BASE }}/about" class="btn-atrio">More About Us</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== Portfolio preview ===== -->
+<section class="section">
+  <div class="container">
+    <div class="row align-items-end mb-5 g-3">
+      <div class="col-lg-8">
+        <span class="eyebrow">Selected work</span>
+        <h2 class="section-title">Recent projects</h2>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{{ @BASE }}/portfolio" class="btn-atrio-ghost">View Portfolio</a>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 reveal">
+        <a href="{{ @BASE }}/portfolio" class="work-item notched">
+          <div class="img-ph">Project image</div>
+          <div class="work-overlay"><span>Branding</span><h4>Crestline rebrand</h4></div>
+        </a>
+      </div>
+      <div class="col-md-4 reveal">
+        <a href="{{ @BASE }}/portfolio" class="work-item notched">
+          <div class="img-ph light">Project image</div>
+          <div class="work-overlay"><span>Web App</span><h4>Helio analytics dashboard</h4></div>
+        </a>
+      </div>
+      <div class="col-md-4 reveal">
+        <a href="{{ @BASE }}/portfolio" class="work-item notched">
+          <div class="img-ph">Project image</div>
+          <div class="work-overlay"><span>Marketing</span><h4>Bluepeak growth program</h4></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonials ===== -->
+<section class="section bg-pine">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <span class="eyebrow">Client feedback</span>
+        <h2 class="section-title mb-5">What our clients say</h2>
+        <div class="testi-slider">
+          <div class="testi-slide">
+            <p class="testi-quote">Atrio rebuilt our entire digital presence in eight weeks. The process was disciplined, the communication was constant, and the results showed up in our pipeline within a quarter.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">SR</div>
+              <div><strong>Sarah Reyes</strong><span>COO, Crestline</span></div>
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p class="testi-quote">They think like operators, not contractors. Every recommendation came with a number attached — cost, impact, timeline. That made internal buy-in effortless.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">DK</div>
+              <div><strong>Daniel Kim</strong><span>Founder, Helio Labs</span></div>
+            </div>
+          </div>
+          <div class="testi-slide">
+            <p class="testi-quote">The dashboard they built handles ten times our old traffic and our support tickets dropped by half. Best engineering partner we have worked with.</p>
+            <div class="testi-author">
+              <div class="testi-avatar">AM</div>
+              <div><strong>Amira Malik</strong><span>CTO, Bluepeak</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-nav">
+          <button class="testi-prev" aria-label="Previous testimonial">←</button>
+          <button class="testi-next" aria-label="Next testimonial">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section-tight bg-mist cta-band">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <h2>{{ @home_settings.cta_title }}</h2>
+        <p class="section-lead mb-0">{{ @home_settings.cta_lead }}</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{{ @BASE }}/contact" class="btn-atrio">{{ @home_settings.cta_button }}</a>
+      </div>
+    </div>
+  </div>
 </section>

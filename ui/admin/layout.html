@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ @title }} · Admin · {{ @general_settings.site_name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="{{ @BASE }}/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ @BASE }}/assets/css/atrio.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #f0f2f5; font-family: var(--font-body, 'Inter', sans-serif); }
+
+    /* Shell */
+    .adm-shell { display: flex; min-height: 100vh; }
+
+    /* Sidebar */
+    .adm-sidebar {
+      width: 230px; flex-shrink: 0;
+      background: var(--pine-deep, #071410);
+      display: flex; flex-direction: column;
+      position: fixed; inset: 0 auto 0 0;
+      z-index: 200;
+    }
+    .adm-brand {
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      text-decoration: none;
+      display: block;
+    }
+    .adm-brand-name {
+      font-family: var(--font-display, 'Sora', sans-serif);
+      font-weight: 800; font-size: 16px;
+      color: var(--saffron, #F0A500);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .adm-brand-sub {
+      font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+      font-size: 10px; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.32);
+      margin-top: 3px;
+    }
+    .adm-nav { padding: 8px 0; flex: 1; overflow-y: auto; }
+    .adm-nav-label {
+      font-family: var(--font-mono, monospace);
+      font-size: 9px; letter-spacing: .16em;
+      text-transform: uppercase; color: rgba(255,255,255,.25);
+      padding: 16px 18px 5px;
+    }
+    .adm-nav a {
+      display: flex; align-items: center; gap: 9px;
+      padding: 8px 18px; font-size: 13.5px; font-weight: 500;
+      color: rgba(255,255,255,.6); text-decoration: none;
+      transition: color .15s, background .15s;
+      border-left: 2px solid transparent;
+    }
+    .adm-nav a .adm-icon {
+      font-size: 15px; width: 18px; text-align: center; flex-shrink: 0;
+    }
+    .adm-nav a:hover { color: #fff; background: rgba(255,255,255,.05); }
+    .adm-nav a.active {
+      color: #fff; background: rgba(255,255,255,.07);
+      border-left-color: var(--saffron, #F0A500);
+    }
+    .adm-nav-divider { height: 1px; background: rgba(255,255,255,.07); margin: 8px 0; }
+    .adm-sidebar-footer {
+      padding: 14px 18px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      font-family: var(--font-mono, monospace);
+      font-size: 11px; color: rgba(255,255,255,.3);
+    }
+
+    /* Main area */
+    .adm-main { margin-left: 230px; flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+    /* Topbar */
+    .adm-topbar {
+      background: #fff; border-bottom: 1px solid #e5e8ec;
+      padding: 0 24px; height: 54px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .adm-topbar-title {
+      font-family: var(--font-display, 'Sora', sans-serif);
+      font-size: 15px; font-weight: 700; color: var(--ink, #111);
+    }
+    .adm-signout {
+      background: none; border: 1px solid #d1d5db;
+      padding: 6px 14px; font-size: 12px; font-family: var(--font-mono, monospace);
+      letter-spacing: .06em; cursor: pointer; color: var(--ink, #111);
+      transition: border-color .15s;
+    }
+    .adm-signout:hover { border-color: #6b7280; }
+
+    /* Content */
+    .adm-content { padding: 28px 28px 48px; flex: 1; }
+
+    /* Cards */
+    .adm-card {
+      background: #fff; border: 1px solid #e5e8ec;
+      padding: 26px 28px; margin-bottom: 24px;
+    }
+    .adm-card-header {
+      font-family: var(--font-mono, monospace);
+      font-size: 10px; letter-spacing: .14em;
+      text-transform: uppercase; color: #6b7280;
+      padding-bottom: 14px; margin-bottom: 20px;
+      border-bottom: 1px solid #e5e8ec;
+    }
+
+    /* Form fields */
+    .adm-field { margin-bottom: 18px; }
+    .adm-field label {
+      display: block; font-size: 13px; font-weight: 600;
+      margin-bottom: 5px; color: var(--ink, #111);
+    }
+    .adm-field .adm-hint { font-size: 12px; color: #6b7280; margin-top: 4px; }
+    .adm-input, .adm-textarea {
+      width: 100%; padding: 9px 12px;
+      border: 1px solid #d1d5db; font-size: 14px;
+      background: #fafafa; font-family: inherit;
+      outline: none; border-radius: 0;
+      transition: border-color .15s, background .15s;
+    }
+    .adm-input:focus, .adm-textarea:focus {
+      border-color: var(--pine, #1A3D2B); background: #fff;
+    }
+    .adm-textarea { resize: vertical; min-height: 90px; }
+    .adm-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+
+    /* Save button */
+    .adm-btn-save {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 28px; background: var(--pine, #1A3D2B); color: #fff;
+      border: none; font-family: var(--font-display, 'Sora', sans-serif);
+      font-weight: 700; font-size: 13.5px; cursor: pointer;
+      transition: opacity .15s;
+    }
+    .adm-btn-save:hover { opacity: .85; }
+
+    /* Section heading */
+    .adm-section-heading {
+      font-size: 11px; font-family: var(--font-mono, monospace);
+      letter-spacing: .13em; text-transform: uppercase;
+      color: var(--saffron, #F0A500); margin: 28px 0 14px;
+    }
+    .adm-section-heading:first-child { margin-top: 0; }
+
+    /* Flash */
+    .adm-flash-wrap { padding: 14px 28px 0; }
+
+    @media (max-width: 900px) {
+      .adm-sidebar { width: 60px; }
+      .adm-brand-name span:last-child, .adm-brand-sub,
+      .adm-nav-label, .adm-nav a span:not(.adm-icon),
+      .adm-sidebar-footer { display: none; }
+      .adm-nav a { justify-content: center; padding: 10px; }
+      .adm-main { margin-left: 60px; }
+    }
+  </style>
+</head>
+<body>
+<div class="adm-shell">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="adm-sidebar">
+    <a href="{{ @BASE }}/admin" class="adm-brand">
+      <div class="adm-brand-name"><span>◈</span><span>Admin</span></div>
+      <div class="adm-brand-sub">{{ @general_settings.site_name }}</div>
+    </a>
+    <nav class="adm-nav">
+      <div class="adm-nav-label">Overview</div>
+      <a href="{{ @BASE }}/admin" class="{{ @admin_section==''?'active':'' }}">
+        <span class="adm-icon">⊞</span><span>Dashboard</span>
+      </a>
+      <div class="adm-nav-label">Page Settings</div>
+      <a href="{{ @BASE }}/admin/settings/general" class="{{ @admin_section=='general'?'active':'' }}">
+        <span class="adm-icon">⊙</span><span>General</span>
+      </a>
+      <a href="{{ @BASE }}/admin/settings/home" class="{{ @admin_section=='home'?'active':'' }}">
+        <span class="adm-icon">⌂</span><span>Home</span>
+      </a>
+      <a href="{{ @BASE }}/admin/settings/about" class="{{ @admin_section=='about'?'active':'' }}">
+        <span class="adm-icon">◎</span><span>About</span>
+      </a>
+      <a href="{{ @BASE }}/admin/settings/blog" class="{{ @admin_section=='blog'?'active':'' }}">
+        <span class="adm-icon">✦</span><span>Blog</span>
+      </a>
+      <a href="{{ @BASE }}/admin/settings/contact" class="{{ @admin_section=='contact'?'active':'' }}">
+        <span class="adm-icon">✉</span><span>Contact</span>
+      </a>
+      <div class="adm-nav-divider"></div>
+      <a href="{{ @BASE }}/" target="_blank">
+        <span class="adm-icon">↗</span><span>View Site</span>
+      </a>
+      <a href="{{ @BASE }}/dashboard">
+        <span class="adm-icon">⟵</span><span>User Dashboard</span>
+      </a>
+    </nav>
+    <div class="adm-sidebar-footer">{{ @current_user.name }}</div>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <div class="adm-main">
+    <div class="adm-topbar">
+      <span class="adm-topbar-title">{{ @title }}</span>
+      <form method="post" action="{{ @BASE }}/logout" style="margin:0;">
+        <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+        <button type="submit" class="adm-signout">Sign Out</button>
+      </form>
+    </div>
+
+    <check if="{{ @flash }}">
+      <div class="adm-flash-wrap">
+        <div class="alert alert-{{ @flash.type }} alert-dismissible fade show"
+             style="border-radius:0;border-left:4px solid var(--pine);" role="alert">
+          {{ @flash.message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </check>
+
+    <div class="adm-content">
+      <include href="{{ @content }}" />
+    </div>
+  </div>
+
+</div>
+<script src="{{ @BASE }}/assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

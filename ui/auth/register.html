@@ -1,64 +1,59 @@
-<div class="auth-page" style="align-items:flex-start;padding-top:3rem;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+<!-- ===== Page header ===== -->
+<section class="page-header">
+  <div class="container">
+    <h1>{{ @auth.register_title }}</h1>
+    <div class="breadcrumb-atrio"><a href="{{ @BASE }}/">Home</a> / Register</div>
+  </div>
+</section>
 
-                <div class="text-center mb-4">
-                    <h1 class="h4 fw-bold mb-1">{{ @auth.register_title }}</h1>
-                    <p class="text-muted small mb-0">{{ @auth.have_account }}
-                        <a href="{{ @BASE }}/login" class="fw-medium">{{ @auth.login_title }}</a>
-                    </p>
-                </div>
-
-                <div class="card border-0">
-                    <div class="card-body p-4">
-                        <form method="post" action="{{ @BASE }}/register">
-                            <input type="hidden" name="csrf" value="{{ @csrf_token }}">
-
-                            <div class="mb-3">
-                                <label class="form-label" for="name">{{ @auth.name }}</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                       required autofocus autocomplete="name">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="email">{{ @auth.email }}</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                       required autocomplete="email">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="gender">{{ @auth.gender }}</label>
-                                <select class="form-select" id="gender" name="gender">
-                                    <option value="">—</option>
-                                    <option value="Male">{{ @auth.gender_male }}</option>
-                                    <option value="Female">{{ @auth.gender_female }}</option>
-                                    <option value="Other">{{ @auth.gender_other }}</option>
-                                </select>
-                            </div>
-
-                            <div class="row g-3 mb-4">
-                                <div class="col-6">
-                                    <label class="form-label" for="password">{{ @auth.password }}</label>
-                                    <input type="password" class="form-control" id="password" name="password"
-                                           required minlength="6" autocomplete="new-password">
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label" for="password_confirm">{{ @auth.confirm }}</label>
-                                    <input type="password" class="form-control" id="password_confirm"
-                                           name="password_confirm" required minlength="6"
-                                           autocomplete="new-password">
-                                </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100">
-                                {{ @auth.submit_register }}
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
+<!-- ===== Register form ===== -->
+<section class="auth-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+        <div class="auth-card">
+          <p class="auth-sub">{{ @auth.have_account }}
+            <a href="{{ @BASE }}/login" style="color:var(--pine);font-weight:600;">{{ @auth.login_title }}</a>
+          </p>
+          <form method="post" action="{{ @BASE }}/register" class="form-atrio">
+            <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+            <div class="mb-4">
+              <label for="name">{{ @auth.name }}</label>
+              <input type="text" class="form-control" id="name" name="name"
+                     required autofocus autocomplete="name">
             </div>
+            <div class="mb-4">
+              <label for="email">{{ @auth.email }}</label>
+              <input type="email" class="form-control" id="email" name="email"
+                     required autocomplete="email">
+            </div>
+            <div class="mb-4">
+              <label for="gender">{{ @auth.gender }}</label>
+              <select class="form-select" id="gender" name="gender">
+                <option value="">—</option>
+                <option value="Male">{{ @auth.gender_male }}</option>
+                <option value="Female">{{ @auth.gender_female }}</option>
+                <option value="Other">{{ @auth.gender_other }}</option>
+              </select>
+            </div>
+            <div class="row g-3 mb-5">
+              <div class="col-6">
+                <label for="password">{{ @auth.password }}</label>
+                <input type="password" class="form-control" id="password" name="password"
+                       required minlength="6" autocomplete="new-password">
+              </div>
+              <div class="col-6">
+                <label for="password_confirm">{{ @auth.confirm }}</label>
+                <input type="password" class="form-control" id="password_confirm"
+                       name="password_confirm" required minlength="6" autocomplete="new-password">
+              </div>
+            </div>
+            <button type="submit" class="btn-atrio w-100 justify-content-center">
+              {{ @auth.submit_register }}
+            </button>
+          </form>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>

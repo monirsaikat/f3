@@ -1,0 +1,69 @@
+<form method="post" action="{{ @BASE }}/admin/settings/contact">
+  <input type="hidden" name="csrf" value="{{ @csrf_token }}">
+
+  <!-- Page header -->
+  <div class="adm-card">
+    <div class="adm-card-header">Page Header</div>
+
+    <div class="adm-field">
+      <label for="page_title">Page Title</label>
+      <input type="text" id="page_title" name="page_title" class="adm-input"
+             value="{{ @settings.page_title }}">
+    </div>
+  </div>
+
+  <!-- Contact info cards -->
+  <div class="adm-card">
+    <div class="adm-card-header">Contact Information</div>
+
+    <div class="adm-field">
+      <label for="address">Office Address</label>
+      <textarea id="address" name="address" class="adm-textarea" rows="3">{{ @settings.address }}</textarea>
+      <div class="adm-hint">Each line becomes a line break on the page.</div>
+    </div>
+
+    <div class="adm-row">
+      <div class="adm-field">
+        <label for="email_primary">Primary Email</label>
+        <input type="text" id="email_primary" name="email_primary" class="adm-input"
+               value="{{ @settings.email_primary }}">
+      </div>
+      <div class="adm-field">
+        <label for="email_support">Support Email</label>
+        <input type="text" id="email_support" name="email_support" class="adm-input"
+               value="{{ @settings.email_support }}">
+      </div>
+    </div>
+
+    <div class="adm-row">
+      <div class="adm-field">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" class="adm-input"
+               value="{{ @settings.phone }}">
+      </div>
+      <div class="adm-field">
+        <label for="phone_hours">Office Hours</label>
+        <input type="text" id="phone_hours" name="phone_hours" class="adm-input"
+               value="{{ @settings.phone_hours }}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact form intro -->
+  <div class="adm-card">
+    <div class="adm-card-header">Form Introduction</div>
+
+    <div class="adm-field">
+      <label for="form_title">Form Title</label>
+      <input type="text" id="form_title" name="form_title" class="adm-input"
+             value="{{ @settings.form_title }}">
+    </div>
+    <div class="adm-field">
+      <label for="form_lead">Form Lead Text</label>
+      <input type="text" id="form_lead" name="form_lead" class="adm-input"
+             value="{{ @settings.form_lead }}">
+    </div>
+  </div>
+
+  <button type="submit" class="adm-btn-save">✓ Save Contact Settings</button>
+</form>
